@@ -50,6 +50,11 @@ var awesome_instance = new SomeModel({a_string: 'awesome', a_data: "Hello World"
 var promisedSave = awesome_instance.save();
 promisedSave.then(function (saved_instance) {
 	console.log('MATCH?: ' + awesome_instance._id + ':' + saved_instance._id);
+	SomeModel.findById(awesome_instance._id, function (err, item) {
+		console.log('findById_in_save');
+		console.log(item)
+		console.log('findById_in_save: fini');
+	})
 });
 
 console.log(awesome_instance);
