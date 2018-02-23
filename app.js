@@ -47,7 +47,10 @@ console.log('SomeModelSchema: ' + SomeModelSchema);
 var SomeModel = mongoose.model('SomeModel', SomeModelSchema);
 
 var awesome_instance = new SomeModel({a_string: 'awesome', a_data: "Hello World"});
-awesome_instance.save();
+var promisedSave = awesome_instance.save();
+promisedSave.then(function (saved_instance) {
+	console.log('MATCH?: ' + awesome_instance._id + ':' + saved_instance._id);
+});
 
 console.log(awesome_instance);
 
